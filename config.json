@@ -1,0 +1,78 @@
+{
+  "_notes": [
+    "Edit this file on GitHub (pencil icon) to change which jobs are collected. Keep the quotes and commas.",
+    "search_terms: words Adzuna looks for in job titles. Each term is one search per update.",
+    "title_must_include_any: a job title must contain one of these to go on the board.",
+    "drop_title_words: jobs with any of these in the title are left off the board.",
+    "senior_title_words: jobs with these in the title are marked Senior/lead (the site can hide them).",
+    "max_required_years: the site's 'Hide jobs asking N+ years' switch hides jobs asking for more than this.",
+    "cities: the city buttons on the site, each with its other spellings. Jobs elsewhere go under 'Other cities'.",
+    "keep_days: jobs older than this many days drop off the board."
+  ],
+  "search_terms": [
+    "data engineer",
+    "data engineering",
+    "databricks",
+    "pyspark",
+    "big data",
+    "etl developer",
+    "snowflake",
+    "azure data"
+  ],
+  "title_must_include_any": [
+    "data engineer",
+    "data engineering",
+    "databricks",
+    "pyspark",
+    "spark",
+    "big data",
+    "etl",
+    "azure data",
+    "data factory",
+    "snowflake",
+    "data platform",
+    "data pipeline",
+    "data integration",
+    "data warehouse",
+    "dwh"
+  ],
+  "drop_title_words": [
+    "tester",
+    "testing",
+    "qa",
+    "trainer",
+    "faculty",
+    "teacher",
+    "intern",
+    "internship",
+    "sales",
+    "recruiter"
+  ],
+  "senior_title_words": [
+    "senior",
+    "sr",
+    "lead",
+    "principal",
+    "staff",
+    "manager",
+    "architect",
+    "director",
+    "head",
+    "vp"
+  ],
+  "max_required_years": 3,
+  "cities": {
+    "Hyderabad": ["hyderabad", "secunderabad"],
+    "Bengaluru": ["bengaluru", "bangalore"],
+    "Pune": ["pune"],
+    "Chennai": ["chennai"],
+    "Gurugram": ["gurugram", "gurgaon"],
+    "Noida": ["noida"]
+  },
+  "remote_words": ["remote", "work from home", "wfh"],
+  "max_days_old": 3,
+  "max_pages_per_term": 2,
+  "first_run_days": 30,
+  "first_run_pages": 4,
+  "keep_days": 30
+}
