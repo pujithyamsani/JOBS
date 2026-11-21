@@ -1,0 +1,18 @@
+{
+ "attempted": "2026-11-21T19:01:34Z",
+ "cities": [
+  "Hyderabad",
+  "Bengaluru",
+  "Pune",
+  "Chennai",
+  "Gurugram",
+  "Noida"
+ ],
+ "max_years": 3,
+ "keep_days": 30,
+ "status": "setup",
+ "message": "Add your ADZUNA_APP_ID and ADZUNA_APP_KEY in the GitHub repository under Settings > Secrets and variables > Actions, then run the workflow again.",
+ "jobs": [
+
+ ]
+}
