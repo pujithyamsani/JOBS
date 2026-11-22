@@ -1,23 +1,65 @@
 {
   "_notes": [
     "Edit this file on GitHub (pencil icon) to change which jobs are collected. Keep the quotes and commas.",
-    "search_terms: words Adzuna looks for in job titles. Each term is one search per update.",
+    "companies: career pages to read. ats is the system the company uses (greenhouse, lever, ashby or smartrecruiters) and slug is the company's name in that system's web address.",
     "title_must_include_any: a job title must contain one of these to go on the board.",
     "drop_title_words: jobs with any of these in the title are left off the board.",
     "senior_title_words: jobs with these in the title are marked Senior/lead (the site can hide them).",
     "max_required_years: the site's 'Hide jobs asking N+ years' switch hides jobs asking for more than this.",
-    "cities: the city buttons on the site, each with its other spellings. Jobs elsewhere go under 'Other cities'.",
-    "keep_days: jobs older than this many days drop off the board."
+    "cities: the city buttons on the site, each with its other spellings. Other Indian cities go under 'Other cities'.",
+    "Company jobs stay on the board while the company still lists them (up to company_keep_days) and drop off as soon as it closes them.",
+    "keep_days: how long Adzuna jobs stay, since those can't be checked for closing.",
+    "search_terms and the settings below them are only used if you add an Adzuna key (optional)."
   ],
-  "search_terms": [
-    "data engineer",
-    "data engineering",
-    "databricks",
-    "pyspark",
-    "big data",
-    "etl developer",
-    "snowflake",
-    "azure data"
+  "companies": [
+    {"name": "Databricks", "ats": "greenhouse", "slug": "databricks"},
+    {"name": "Snowflake", "ats": "ashby", "slug": "snowflake"},
+    {"name": "MongoDB", "ats": "greenhouse", "slug": "mongodb"},
+    {"name": "Fivetran", "ats": "greenhouse", "slug": "fivetran"},
+    {"name": "Sigmoid", "ats": "greenhouse", "slug": "sigmoid"},
+    {"name": "Celonis", "ats": "greenhouse", "slug": "celonis"},
+    {"name": "Stripe", "ats": "greenhouse", "slug": "stripe"},
+    {"name": "Coinbase", "ats": "greenhouse", "slug": "coinbase"},
+    {"name": "Zscaler", "ats": "greenhouse", "slug": "zscaler"},
+    {"name": "Okta", "ats": "greenhouse", "slug": "okta"},
+    {"name": "Pure Storage", "ats": "greenhouse", "slug": "purestorage"},
+    {"name": "Rubrik", "ats": "greenhouse", "slug": "rubrik"},
+    {"name": "Netskope", "ats": "greenhouse", "slug": "netskope"},
+    {"name": "Zeta Global", "ats": "greenhouse", "slug": "zetaglobal"},
+    {"name": "InMobi", "ats": "greenhouse", "slug": "inmobi"},
+    {"name": "GitLab", "ats": "greenhouse", "slug": "gitlab"},
+    {"name": "Toast", "ats": "greenhouse", "slug": "toast"},
+    {"name": "Agoda", "ats": "greenhouse", "slug": "agoda"},
+    {"name": "Airbnb", "ats": "greenhouse", "slug": "airbnb"},
+    {"name": "Twilio", "ats": "greenhouse", "slug": "twilio"},
+    {"name": "Elastic", "ats": "greenhouse", "slug": "elastic"},
+    {"name": "HackerRank", "ats": "greenhouse", "slug": "hackerrank"},
+    {"name": "Harness", "ats": "greenhouse", "slug": "harnessinc"},
+    {"name": "Sumo Logic", "ats": "greenhouse", "slug": "sumologic"},
+    {"name": "Druva", "ats": "greenhouse", "slug": "druva"},
+    {"name": "Datadog", "ats": "greenhouse", "slug": "datadog"},
+    {"name": "Groww", "ats": "greenhouse", "slug": "groww"},
+    {"name": "Yugabyte", "ats": "greenhouse", "slug": "yugabyte"},
+    {"name": "New Relic", "ats": "greenhouse", "slug": "newrelic"},
+    {"name": "StarTree", "ats": "greenhouse", "slug": "startree"},
+    {"name": "Cockroach Labs", "ats": "greenhouse", "slug": "cockroachlabs"},
+    {"name": "Paytm", "ats": "lever", "slug": "paytm"},
+    {"name": "Meesho", "ats": "lever", "slug": "meesho"},
+    {"name": "Hevo Data", "ats": "lever", "slug": "hevodata"},
+    {"name": "Zeta", "ats": "lever", "slug": "zeta"},
+    {"name": "FamPay", "ats": "lever", "slug": "fampay"},
+    {"name": "CRED", "ats": "lever", "slug": "cred"},
+    {"name": "Spotify", "ats": "lever", "slug": "spotify"},
+    {"name": "Sarvam AI", "ats": "ashby", "slug": "sarvam"},
+    {"name": "ClickHouse", "ats": "ashby", "slug": "clickhouse"},
+    {"name": "Atlan", "ats": "ashby", "slug": "atlan"},
+    {"name": "Notion", "ats": "ashby", "slug": "notion"},
+    {"name": "Bosch", "ats": "smartrecruiters", "slug": "BoschGroup"},
+    {"name": "ServiceNow", "ats": "smartrecruiters", "slug": "ServiceNow"},
+    {"name": "Freshworks", "ats": "smartrecruiters", "slug": "freshworks"},
+    {"name": "Experian", "ats": "smartrecruiters", "slug": "Experian"},
+    {"name": "AbbVie", "ats": "smartrecruiters", "slug": "AbbVie"},
+    {"name": "Ubisoft", "ats": "smartrecruiters", "slug": "Ubisoft2"}
   ],
   "title_must_include_any": [
     "data engineer",
@@ -34,7 +76,11 @@
     "data pipeline",
     "data integration",
     "data warehouse",
-    "dwh"
+    "dwh",
+    "analytics engineer",
+    "data infrastructure",
+    "dataops",
+    "data ops"
   ],
   "drop_title_words": [
     "tester",
@@ -46,7 +92,9 @@
     "intern",
     "internship",
     "sales",
-    "recruiter"
+    "recruiter",
+    "account executive",
+    "development partner"
   ],
   "senior_title_words": [
     "senior",
@@ -70,9 +118,20 @@
     "Noida": ["noida"]
   },
   "remote_words": ["remote", "work from home", "wfh"],
+  "company_keep_days": 180,
+  "keep_days": 30,
+  "search_terms": [
+    "data engineer",
+    "data engineering",
+    "databricks",
+    "pyspark",
+    "big data",
+    "etl developer",
+    "snowflake",
+    "azure data"
+  ],
   "max_days_old": 3,
   "max_pages_per_term": 2,
   "first_run_days": 30,
-  "first_run_pages": 4,
-  "keep_days": 30
+  "first_run_pages": 4
 }

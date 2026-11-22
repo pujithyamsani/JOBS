@@ -212,7 +212,7 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
 </main>
 
 <footer class="wrap foot">
-  <span>Jobs by <a href="https://www.adzuna.in" target="_blank" rel="noopener">Adzuna</a>, checked every 2 hours from 6:45 AM to 10:45 PM IST. Jobs stay on the board for 30 days.</span>
+  <span>Jobs come from companies' own career pages<span id="adzunaNote" hidden> and from <a href="https://www.adzuna.in" target="_blank" rel="noopener">Adzuna</a></span>, checked every 2 hours from 6:45 AM to 10:45 PM IST. A job leaves the board when the company closes it.</span>
   <span>Saved, Applied and Hidden marks are kept in this browser only.</span>
 </footer>
 
@@ -341,8 +341,11 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
         notice("warn", "Jobs were last updated " + ago(upd).toLowerCase() + ". New jobs will appear after the next automatic update.");
       }
     }
-    $("sub").textContent = JOBS.length.toLocaleString("en-IN") + " Data Engineer openings from the last " +
-      (data.keep_days || 30) + " days, collected every 2 hours from 6:45 AM to 10:45 PM.";
+    var src = data.sources || {};
+    $("sub").textContent = JOBS.length.toLocaleString("en-IN") + " open Data Engineer roles in India, collected from " +
+      (src.companies ? src.companies + " companies' career pages" : "company career pages") +
+      (src.adzuna ? " and Adzuna" : "") + " every 2 hours from 6:45 AM to 10:45 PM.";
+    $("adzunaNote").hidden = !src.adzuna;
     $("hideYearsLabel").textContent = "Hide jobs asking " + (MAX_YEARS + 1) + "+ years";
 
     // filters (remembered between visits)
@@ -577,6 +580,7 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
     $("empty").hidden = true;
     if (!list.length) {
       if (!JOBS.length && (view.tab === "all" || view.tab === "new")) renderEmpty("No jobs yet", "Jobs appear here after the first update.");
+      else if (view.tab === "all" && !view.q.length && (f.hideSenior || f.hideYears)) renderEmpty("No jobs match these filters", "Many openings are senior roles. Turn off \"Hide senior and lead roles\" to see them.");
       else if (view.tab === "new") renderEmpty("Nothing new since your last visit", "New jobs get a gold New label when they arrive.");
       else if (view.tab === "saved" && !view.q.length) renderEmpty("No saved jobs", "Press Save on a job to keep it here.");
       else if (view.tab === "applied" && !view.q.length) renderEmpty("Nothing marked as applied", "Press Applied on a job after you apply, to keep track.");
