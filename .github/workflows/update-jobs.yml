@@ -26,12 +26,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  update:
+  collect:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - name: Get the code
         uses: actions/checkout@v5
@@ -65,6 +62,25 @@ jobs:
         with:
           path: _site
 
+  publish:
+    # A separate job, so the uploaded website is fully registered before publishing starts.
+    needs: collect
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url || steps.deploy_retry.outputs.page_url }}
+    steps:
       - name: Publish the website
         id: deploy
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+
+      - name: Wait a moment before trying again
+        if: steps.deploy.outcome == 'failure'
+        run: sleep 45
+
+      - name: Publish the website (second try)
+        id: deploy_retry
+        if: steps.deploy.outcome == 'failure'
         uses: actions/deploy-pages@v5
