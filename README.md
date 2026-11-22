@@ -19,7 +19,8 @@ Because these lists come straight from the company:
 
 - **Search** by job title, company or skill. Press `/` to jump to the search box.
 - **Filter** by city (Hyderabad, Bengaluru, Pune, Chennai, Gurugram, Noida, Remote, other cities) and by when the job was posted.
-- **Seniority:** senior and lead roles, and jobs that ask for 4+ years of experience, are hidden by default. Turn either switch off to see them.
+- **Seniority:** senior and lead roles are hidden by default. Turn the switch off to see them.
+- **Experience:** jobs asking for 2+ years are hidden by default. Use the dropdown to hide jobs asking 3+, 4+ or 6+ years instead, or to show all. Jobs that don't mention years of experience are always shown.
 - **New jobs** since your last visit get a gold **New** label and have their own tab.
 - **Save**, **Applied** and **Hide** buttons keep your own lists. They're stored in the browser you use.
 

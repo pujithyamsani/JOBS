@@ -5,7 +5,7 @@
     "title_must_include_any: a job title must contain one of these to go on the board.",
     "drop_title_words: jobs with any of these in the title are left off the board.",
     "senior_title_words: jobs with these in the title are marked Senior/lead (the site can hide them).",
-    "max_required_years: the site's 'Hide jobs asking N+ years' switch hides jobs asking for more than this.",
+    "max_required_years: the site's Experience filter starts by hiding jobs that ask for more years than this (1 = hide jobs asking 2+ years). Choices on the site: 1, 2, 3 or 5.",
     "cities: the city buttons on the site, each with its other spellings. Other Indian cities go under 'Other cities'.",
     "Company jobs stay on the board while the company still lists them (up to company_keep_days) and drop off as soon as it closes them.",
     "keep_days: how long Adzuna jobs stay, since those can't be checked for closing.",
@@ -108,7 +108,7 @@
     "head",
     "vp"
   ],
-  "max_required_years": 3,
+  "max_required_years": 1,
   "cities": {
     "Hyderabad": ["hyderabad", "secunderabad"],
     "Bengaluru": ["bengaluru", "bangalore"],

@@ -190,7 +190,15 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
           </select>
         </label>
         <label class="tog"><input type="checkbox" id="hideSenior"><span>Hide senior and lead roles</span></label>
-        <label class="tog"><input type="checkbox" id="hideYears"><span id="hideYearsLabel">Hide jobs asking 4+ years</span></label>
+        <label class="sel"><span class="lbl">Experience</span>
+          <select id="maxYears">
+            <option value="any">Show all</option>
+            <option value="1">Hide jobs asking 2+ years</option>
+            <option value="2">Hide jobs asking 3+ years</option>
+            <option value="3">Hide jobs asking 4+ years</option>
+            <option value="5">Hide jobs asking 6+ years</option>
+          </select>
+        </label>
       </div>
     </div>
   </section>
@@ -274,8 +282,10 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
   var PAGE = 30;
   var SUGGEST = ["Azure", "Databricks", "PySpark", "Snowflake", "AWS", "ADF", "Spark"];
 
+  var YEAR_OPTIONS = ["any", "1", "2", "3", "5"];
   function defaults() {
-    return { cities: DEFAULT_CITIES.slice(), posted: "0", hideSenior: true, hideYears: true };
+    var y = String(MAX_YEARS);
+    return { cities: DEFAULT_CITIES.slice(), posted: "0", hideSenior: true, maxYears: YEAR_OPTIONS.indexOf(y) !== -1 ? y : "1" };
   }
   function saveFilters() { store.set("jb_filters", f); }
   function markOf(id) { var m = marks[id]; return m && m.s; }
@@ -308,7 +318,7 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
 
   function init(data) {
     CITIES = Array.isArray(data.cities) ? data.cities : [];
-    MAX_YEARS = typeof data.max_years === "number" ? data.max_years : 3;
+    MAX_YEARS = typeof data.max_years === "number" ? data.max_years : 1;
     DEFAULT_CITIES = CITIES.concat(["Remote"]);
     JOBS = (Array.isArray(data.jobs) ? data.jobs : []).filter(function (j) { return j && j.id && j.title; });
     JOBS.forEach(function (j) {
@@ -346,7 +356,6 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
       (src.companies ? src.companies + " companies' career pages" : "company career pages") +
       (src.adzuna ? " and Adzuna" : "") + " every 2 hours from 6:45 AM to 10:45 PM.";
     $("adzunaNote").hidden = !src.adzuna;
-    $("hideYearsLabel").textContent = "Hide jobs asking " + (MAX_YEARS + 1) + "+ years";
 
     // filters (remembered between visits)
     var saved = store.get("jb_filters", null);
@@ -358,7 +367,7 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
       }
       if (["0", "1", "3", "7"].indexOf(saved.posted) !== -1) f.posted = saved.posted;
       if (typeof saved.hideSenior === "boolean") f.hideSenior = saved.hideSenior;
-      if (typeof saved.hideYears === "boolean") f.hideYears = saved.hideYears;
+      if (YEAR_OPTIONS.indexOf(saved.maxYears) !== -1) f.maxYears = saved.maxYears;
     }
     buildChips();
     buildSuggest();
@@ -412,18 +421,18 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
     });
     $("posted").value = f.posted;
     $("hideSenior").checked = f.hideSenior;
-    $("hideYears").checked = f.hideYears;
+    $("maxYears").value = f.maxYears;
   }
   function isDefault() {
     var d = defaults();
-    return !view.q.length && f.posted === d.posted && f.hideSenior === d.hideSenior && f.hideYears === d.hideYears &&
+    return !view.q.length && f.posted === d.posted && f.hideSenior === d.hideSenior && f.maxYears === d.maxYears &&
       f.cities.length === d.cities.length && d.cities.every(function (c) { return f.cities.indexOf(c) !== -1; });
   }
   function changed() { view.shown = PAGE; saveFilters(); syncControls(); render(); }
 
   $("posted").addEventListener("change", function () { f.posted = this.value; changed(); });
   $("hideSenior").addEventListener("change", function () { f.hideSenior = this.checked; changed(); });
-  $("hideYears").addEventListener("change", function () { f.hideYears = this.checked; changed(); });
+  $("maxYears").addEventListener("change", function () { f.maxYears = this.value; changed(); });
   $("clearBtn").addEventListener("click", function () { f = defaults(); $("q").value = ""; view.q = []; changed(); });
   $("moreBtn").addEventListener("click", function () { view.shown += PAGE; render(); });
 
@@ -455,7 +464,7 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
     var days = +f.posted;
     if (days && j._t < Date.now() - days * DAY) return false;
     if (f.hideSenior && j.senior) return false;
-    if (f.hideYears && typeof j.years === "number" && j.years > MAX_YEARS) return false;
+    if (f.maxYears !== "any" && typeof j.years === "number" && j.years > +f.maxYears) return false;
     return true;
   }
   function markedList(kind) {
@@ -580,7 +589,7 @@ a.job-title::after{content:" ↗";font-family:var(--mono);font-size:13px;color:v
     $("empty").hidden = true;
     if (!list.length) {
       if (!JOBS.length && (view.tab === "all" || view.tab === "new")) renderEmpty("No jobs yet", "Jobs appear here after the first update.");
-      else if (view.tab === "all" && !view.q.length && (f.hideSenior || f.hideYears)) renderEmpty("No jobs match these filters", "Many openings are senior roles. Turn off \"Hide senior and lead roles\" to see them.");
+      else if (view.tab === "all" && !view.q.length && (f.hideSenior || f.maxYears !== "any")) renderEmpty("No jobs match these filters", "Many openings are senior roles or ask for more experience. Turn off \"Hide senior and lead roles\" or set Experience to \"Show all\".");
       else if (view.tab === "new") renderEmpty("Nothing new since your last visit", "New jobs get a gold New label when they arrive.");
       else if (view.tab === "saved" && !view.q.length) renderEmpty("No saved jobs", "Press Save on a job to keep it here.");
       else if (view.tab === "applied" && !view.q.length) renderEmpty("Nothing marked as applied", "Press Applied on a job after you apply, to keep track.");
