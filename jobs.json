@@ -1,5 +1,5 @@
 {
- "attempted": "2026-11-23T21:21:53Z",
+ "attempted": "2026-11-24T10:55:00Z",
  "cities": [
   "Hyderabad",
   "Bengaluru",
@@ -16,8 +16,8 @@
   "companies": 48,
   "adzuna": false
  },
- "updated": "2026-11-23T21:21:53Z",
- "added": 1,
+ "updated": "2026-11-24T10:55:00Z",
+ "added": 0,
  "jobs": [
 {"id":"smartrecruiters:BoschGroup:744000162700979","title":"Product-led Growth Manager, D.OS (Cloud and Data Platform)_MPIN","company":"Bosch","location":"Bengaluru, KA, India","city":"Bengaluru","remote":false,"senior":true,"years":null,"posted":"2026-11-20T10:23:39Z","url":"https://jobs.smartrecruiters.com/BoschGroup/744000162700979","snippet":"","source":"company","feed":"smartrecruiters:BoschGroup","first_seen":"2026-11-22T07:57:04Z"},
 {"id":"smartrecruiters:BoschGroup:744000162671589","title":"Senior AI & Data Engineer","company":"Bosch","location":"bangalore, India","city":"Bengaluru","remote":false,"senior":true,"years":null,"posted":"2026-11-20T08:06:32Z","url":"https://jobs.smartrecruiters.com/BoschGroup/744000162671589","snippet":"","source":"company","feed":"smartrecruiters:BoschGroup","first_seen":"2026-11-22T07:57:04Z"},
