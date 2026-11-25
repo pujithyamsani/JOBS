@@ -1,5 +1,5 @@
 {
- "attempted": "2026-11-25T09:51:03Z",
+ "attempted": "2026-11-25T20:28:22Z",
  "cities": [
   "Hyderabad",
   "Bengaluru",
@@ -16,9 +16,10 @@
   "companies": 48,
   "adzuna": false
  },
- "updated": "2026-11-25T09:51:03Z",
- "added": 0,
+ "updated": "2026-11-25T20:28:22Z",
+ "added": 1,
  "jobs": [
+{"id":"greenhouse:celonis:8198070003","title":"Analytics Engineer_IC2","company":"Celonis","location":"Bangalore, India","city":"Bengaluru","remote":false,"senior":false,"years":null,"posted":"2026-11-25T13:56:01Z","url":"https://job-boards.greenhouse.io/celonis/jobs/8198070003?gh_jid=8198070003","snippet":"Celonis is the trusted platform to industrialize Enterprise AI. At our core is the Celonis Context Model — which combines process data, business knowledge, and intelligence into a living digital twin of the enterprise that AI can actually understand, turning AI's operational…","source":"company","feed":"greenhouse:celonis","first_seen":"2026-11-25T20:28:22Z"},
 {"id":"smartrecruiters:BoschGroup:744000162700979","title":"Product-led Growth Manager, D.OS (Cloud and Data Platform)_MPIN","company":"Bosch","location":"Bengaluru, KA, India","city":"Bengaluru","remote":false,"senior":true,"years":null,"posted":"2026-11-20T10:23:39Z","url":"https://jobs.smartrecruiters.com/BoschGroup/744000162700979","snippet":"","source":"company","feed":"smartrecruiters:BoschGroup","first_seen":"2026-11-22T07:57:04Z"},
 {"id":"smartrecruiters:BoschGroup:744000162671589","title":"Senior AI & Data Engineer","company":"Bosch","location":"bangalore, India","city":"Bengaluru","remote":false,"senior":true,"years":null,"posted":"2026-11-20T08:06:32Z","url":"https://jobs.smartrecruiters.com/BoschGroup/744000162671589","snippet":"","source":"company","feed":"smartrecruiters:BoschGroup","first_seen":"2026-11-22T07:57:04Z"},
 {"id":"smartrecruiters:BoschGroup:744000162446433","title":"Data Engineering & Agentic AI","company":"Bosch","location":"bangalore, India","city":"Bengaluru","remote":false,"senior":false,"years":null,"posted":"2026-11-19T07:02:11Z","url":"https://jobs.smartrecruiters.com/BoschGroup/744000162446433","snippet":"","source":"company","feed":"smartrecruiters:BoschGroup","first_seen":"2026-11-22T07:57:04Z"},
