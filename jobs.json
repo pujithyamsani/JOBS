@@ -1,5 +1,5 @@
 {
- "attempted": "2026-11-27T19:56:38Z",
+ "attempted": "2026-11-28T08:54:43Z",
  "cities": [
   "Hyderabad",
   "Bengaluru",
@@ -16,7 +16,7 @@
   "companies": 48,
   "adzuna": false
  },
- "updated": "2026-11-27T19:56:38Z",
+ "updated": "2026-11-28T08:54:43Z",
  "added": 0,
  "jobs": [
 {"id":"lever:hevodata:ac91f4b5-76a8-45a3-bed2-41859dc64d17","title":"Customer Data engineer","company":"Hevo Data","location":"Bangalore, India","city":"Bengaluru","remote":false,"senior":false,"years":2,"posted":"2026-11-26T06:33:01Z","url":"https://jobs.lever.co/hevodata/ac91f4b5-76a8-45a3-bed2-41859dc64d17","snippet":"About the role This role is a strong fit for data engineers with 2 to 4 years of experience who want to take their technical depth into a customer-facing role. If you have spent the last few years building pipelines, working with cloud warehouses, and solving real data problems…","source":"company","feed":"lever:hevodata","first_seen":"2026-11-26T09:30:28Z"},
